@@ -1,0 +1,11 @@
+Napisz komponent User, który będzie wyświetlał informacje o użytkowniku:
+
+imię
+nazwisko
+adres (ulica, miasto)
+adres email
+datę rejestracji w systemie sformatowaną w przyjazny do czytania sposób (np. poniedziałek, 11 maja)
+zdjęcie profilowe
+Skorzystaj do tego z API Random User, aby pobrać listę 10 użytkowników i przechowywać ją w komponencie UserList. Ten komponent będzie posiadał iterację i będzie wykorzystywał komponenty User.
+
+Jeżeli nie jest przekazany adres, należy wpisać tekst brak. Jeżeli nie przekaże się imienia lub nazwiska, wówczas wyświetl komunikat: Nie przekazano imienia i nazwiska.
