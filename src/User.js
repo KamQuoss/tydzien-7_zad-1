@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const UserContainer = styled.div`
   text-align: center;
@@ -8,34 +9,70 @@ const UserContainer = styled.div`
   border-bottom-width: 4px;
   border-right-width: 6px;
   margin: 10px;
-  min-width: 300px;
-  max-width: 400px;
-  position: relative;
+  width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 `;
 
-const Hero = styled.div`
-  position: absolute;
-  clip-path: circle(50% at 36% 35%);
+const Hero = styled.img`
+  outline: 1px solid #fff;
+  object-fit: cover;
+`;
+const Info = styled.div`
+  padding: 80px 10px 10px 10px;
+  text-align: left;
+  line-height: 1.6;
+`;
+const Name = styled.p`
+  margin: 6px 0px;
+  padding-bottom: 3px;
+  font-size: 135%;
+  border-bottom: 1px solid white;
+`;
+const Address = styled.p`
+  font-size: 80%;
+  margin: 0px;
+`;
+const Mail = styled.p`
+  margin: 0px;
+  margin-bottom: 6px;
+`;
+const Date = styled.p`
+  margin: 0;
+  font-size: 70%;
+  text-align: right;
 `;
 
 export default function User({
   firstName,
   lastName,
-  address,
+  street,
+  city,
+  state,
+  country,
+  postcode,
   email,
   date,
   picture
 }) {
+  moment.locale();
   return (
     <UserContainer>
-      <Hero>
-        <img alt="imie i nazwisko usera" src={picture} />
-      </Hero>
-      <p>Imię: {firstName} </p>
-      <p>Nazwisko: {lastName}</p>
-      <p>Adres: {address}</p>
-      <p>e-mail: {email} </p>
-      <p>Data: {date} </p>
+      <Hero alt="imie i nazwisko usera" src={picture} />
+      <Info>
+        <Name>
+          {firstName} {lastName}
+        </Name>
+        <Mail>{email} </Mail>
+        <Address>
+          {street.name} {street.number}
+          <br />
+          {postcode} {city} {state}
+          <br />
+          {country}
+        </Address>
+        <Date>{moment(date).format("LL")} </Date>
+      </Info>
     </UserContainer>
   );
 }

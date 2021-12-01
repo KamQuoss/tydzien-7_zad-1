@@ -25,7 +25,7 @@ export default function UserList() {
     fetch(`${baseURL}?${numberOfReasults}&${includedFields}&${additionalInfo}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setUsers(data.results);
         setIsLoading(false);
       })
@@ -46,10 +46,10 @@ export default function UserList() {
             key={id}
             firstName={user.name.first || "Nie podane"}
             lastName={user.name.last || "Nie podane"}
-            address={user.location.city}
+            {...user.location}
             email={user.email}
             date={user.dob.date}
-            picture={user.picture.medium}
+            picture={user.picture.large}
           />
         ))}
     </UserListContainer>
